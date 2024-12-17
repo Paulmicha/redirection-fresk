@@ -36,6 +36,7 @@
 	--space-3xl: clamp(6rem, 5.6087rem + 1.9565vw, 7.125rem);
 
 	--line-length: 70ch;
+	--line-length-s: 50ch;
 	--max-length: calc(var(--line-length) * 2 + var(--space-m));
 
 	--top-fixed-height: 3ch;
@@ -256,6 +257,30 @@ textarea {
 
 
 /*
+	Base : vertical rhythm.
+*/
+
+h1,
+h2,
+h3,
+h4,
+hr,
+p,
+pre,
+blockquote,
+.s-rich-text ul,
+.s-rich-text ol {
+	margin: 0 0 var(--size-0) 0;
+}
+p:last-child,
+pre:last-child,
+blockquote:last-child,
+.s-rich-text.s-rich-text > *:last-child {
+	margin-bottom: 0;
+}
+
+
+/*
 	Base : Images.
 */
 
@@ -278,8 +303,8 @@ a.text-link {
 	color: inherit;
 	transition: color .3s;
 }
-.s-rich-text a.text-link:hover,
-.s-rich-text a.text-link:focus,
+.s-rich-text a:hover,
+.s-rich-text a:focus,
 a.text-link:hover,
 a.text-link:focus {
 	color: var(--blue);
@@ -287,16 +312,27 @@ a.text-link:focus {
 
 
 /*
-	TODO Base : Titles.
+	Base : Headings, Titles.
 */
 
-/* h1,
+h1,
 h2,
 h3,
-h4,
-h5,
-h6 {
-} */
+h4 {
+	line-height: 1.1;
+}
+
+h1 {
+	font-size: var(--size-2);
+}
+
+h2 {
+	font-size: var(--size-1);
+}
+
+h3 {
+	font-size: var(--size-0);
+}
 
 
 /*
@@ -380,6 +416,30 @@ ul.Hug {
 	list-style: none;
 }
 
+.Grid {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-m);
+}
+.Grid {
+	display: flex;
+	flex-direction: column;
+	gap: var(--space-m);
+}
+@media (min-width: 55rem) {
+	.Grid {
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.Grid-item {
+		/* flex: 1 1 0;
+		width: 0; */
+		flex: 1 0 var(--line-length-s);
+		max-width: var(--line-length);
+	}
+}
+
 
 /*
 	Header components.
@@ -391,6 +451,7 @@ ul.Hug {
 	width: 100%;
 }
 .Top-logo-content {
+	font-size: var(--size--1);
 	height: var(--top-fixed-height);
 }
 .Top-logo-content a {
@@ -404,8 +465,41 @@ ul.Hug {
 	width: min(12ch, 33vw);
 }
 .Hero-illustration {
+  margin: var(--space-m) 0;
   background-size: cover;
   background-image: url('./img/illustration-fresque-renoncement.jpg');
   background-position: 50%;
 	height: min(33ch, 50vh);
+}
+
+.Page-nav {
+	display: flex;
+	gap: var(--space-m);
+	flex-wrap: wrap;
+	margin: 0;
+	padding: 0;
+}
+/* .Page-nav > * {
+	flex: 1 1 0;
+	width: 0;
+} */
+.Page-nav > li {
+	list-style: none;
+}
+
+
+/*
+	Content components.
+*/
+
+.Illustration {
+	max-width: var(--line-length);
+}
+
+.Illustration-xs {
+	width: min(50vw, calc(var(--line-length) / 3));
+}
+
+.Footer {
+	padding-top: var(--space-m);
 }
